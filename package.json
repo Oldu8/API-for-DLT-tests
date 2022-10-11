@@ -1,0 +1,16 @@
+{
+  "name": "ontario-driving-tests",
+  "version": "1.0.0",
+  "description": "5 driving rules packages and 5 driving road signs packages",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
+  }
+}
