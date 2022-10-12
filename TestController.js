@@ -1,55 +1,45 @@
 import Test from './models/Tests.js'
+import TestService from './TestService.js';
 
 class TestController {
     async create(req, res) {
         try {
-            const { id, question, category, testNumber, incorrect_answers, correct_answer, imageUrl } = req.body;
-            const test = await Test.create({
-                id, question, category, testNumber, incorrect_answers, correct_answer, imageUrl
-            })
+            const test = await TestService.create(req.body)
             res.json(test)
         } catch (error) {
             res.status(500).json({
                 message: 'Cannot create test',
                 error
             })
-
         }
     }
 
     async getAll(req, res) {
         try {
-            const tests = await Test.find();
+            const tests = await TestService.getAll();
             res.json(tests)
         } catch (error) {
             res.status(500).json({
                 message: 'Cannot get all tests',
                 error
             })
-
         }
     }
     async getOne(req, res) {
         try {
-            const { id } = req.params;
-            if (!id) {
-                return res.status(404).json({
-                    message: 'Cant find test by id'
-                })
-            }
-            const test = await Test.findById(id);
-
+            const test = await TestService.getOne(req.params.id);
             res.json(test)
         } catch (error) {
             res.status(500).json({
                 message: 'Cannot get one test',
                 error
             })
-
         }
     }
     async update(req, res) {
         try {
+            const updatedTest = await TestService.update(req.body)
+            return res.json(updatedTest)
 
         } catch (error) {
             res.status(500).json({
@@ -61,7 +51,8 @@ class TestController {
     }
     async delete(req, res) {
         try {
-
+            const test = await TestService.delete(req.params.id);
+            return res.json(test)
         } catch (error) {
             res.status(500).json({
                 message: 'Cannot delete test',

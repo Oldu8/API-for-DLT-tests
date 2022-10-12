@@ -7,6 +7,6 @@ router.post('/tests', TestController.create)
 router.get('/tests', TestController.getAll)
 router.get('/tests/:id', TestController.getOne)
 router.put("/tests", TestController.update)
-router.delete('/test/:id', TestController.delete)
+router.delete('/tests/:id', TestController.delete)
 
 export default router;
